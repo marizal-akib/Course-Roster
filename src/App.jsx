@@ -26,13 +26,13 @@ function App() {
       });
       setPrice(price)
       if (count >=20){
-        return alert('over')
+        return alert(' You Have Exceeded Your Credit Hour Limit.')
       }else{
         setTotalHour(count);
       }
       const remaining = 20 - count;
       if (remaining <=0){
-        return alert("negative")
+        return alert("You Have Exceeded Your Credit Hour Limit.")
       }else{
         setRemaining(remaining);
       }
