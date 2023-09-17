@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import Course from "../Course/Course";
 
-const Courses = () => {
+// eslint-disable-next-line react/prop-types
+const Courses = ({handleSelectToCart}) => {
     const [courses , setCourses] = useState([]);
     useEffect( () => {
         fetch('courses.json')
@@ -9,7 +11,13 @@ const Courses = () => {
         .then(data => setCourses(data))
     })
     return (
-        <div>
+        <div className="md:w-2/3 mx-auto grid grid-cols-3 gap-3 items-center">
+            {
+                courses.map(course => <Course 
+                    key={course.id}
+                    handleSelectToCart={handleSelectToCart}
+                    course={course}></Course>)
+            }
         </div>
     );
 };
