@@ -7,12 +7,35 @@ import Header from './Components/Header/Header'
 
 function App() {
   const [addedCourses, setAddedCourses] = useState([]);
+  const [totalHour , setTotalHour] =useState(0);
+  const [remaining, setRemaining] = useState(20);
+  const [price, setPrice] = useState(0);
 
   const handleSelectToCart = (course) =>{
     const isSelected = addedCourses.find(item => item.id === course.id);
+    let count = course.creditHour;
+    let price = course.price;
+
     if (isSelected){
-      return alert("Course Already Selected")
+      return alert("This Course Has Already Been Chosen")
     } else{
+      
+      addedCourses.forEach((item) =>{
+        count = count + item.creditHour; 
+        price = price + item.price;
+      });
+      setPrice(price)
+      if (count >=20){
+        return alert('over')
+      }else{
+        setTotalHour(count);
+      }
+      const remaining = 20 - count;
+      if (remaining <=0){
+        return alert("negative")
+      }else{
+        setRemaining(remaining);
+      }
       
       const newAddedCourses =[...addedCourses, course];
       setAddedCourses(newAddedCourses);
@@ -27,7 +50,11 @@ function App() {
       <div className='lg:flex md:flex max-w-7xl mx-auto'>
 
       <Courses handleSelectToCart={handleSelectToCart}></Courses>
-      <Cart addedCourses={addedCourses}></Cart>
+      <Cart 
+      totalHour={totalHour}
+      remaining={remaining}
+      price={price}
+      addedCourses={addedCourses}></Cart>
 
       </div>
       
