@@ -47,7 +47,7 @@ function App() {
     <>
      
       <Header></Header>
-      <div className='lg:flex md:flex max-w-7xl mx-auto'>
+      <div className='lg:flex md:flex max-w-7xl mx-auto pr-2 py-2'>
 
       <Courses handleSelectToCart={handleSelectToCart}></Courses>
       <Cart 
