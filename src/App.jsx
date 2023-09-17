@@ -8,8 +8,16 @@ import Header from './Components/Header/Header'
 function App() {
   const [addedCourses, setAddedCourses] = useState([]);
 
-  const handleSelectToCart = course =>{
-    console.log("SELECTED");
+  const handleSelectToCart = (course) =>{
+    const isSelected = addedCourses.find(item => item.id === course.id);
+    if (isSelected){
+      return alert("Course Already Selected")
+    } else{
+      
+      const newAddedCourses =[...addedCourses, course];
+      setAddedCourses(newAddedCourses);
+    }
+  
   }
 
   return (
@@ -19,7 +27,7 @@ function App() {
       <div className='lg:flex md:flex max-w-7xl mx-auto'>
 
       <Courses handleSelectToCart={handleSelectToCart}></Courses>
-      <Cart></Cart>
+      <Cart addedCourses={addedCourses}></Cart>
 
       </div>
       

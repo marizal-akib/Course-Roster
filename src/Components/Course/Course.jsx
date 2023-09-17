@@ -19,7 +19,7 @@ const Course = ({course,handleSelectToCart}) => {
                 </p>
                 <p className='text-sm text-gray-500'> Credit: {creditHour}hr</p>
             </div>
-            <button onClick={handleSelectToCart} className='bg-blue-500 
+            <button onClick={()=>handleSelectToCart(course)} className='bg-blue-500 
              text-lg
              font-semibold
              text-white rounded-lg
